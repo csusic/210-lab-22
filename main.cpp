@@ -129,6 +129,65 @@ public:
             delete temp;
         }
     }
+    
+    //delete node by position
+    void delete_pos(int value, int position) {
+        if (!head) return; // Empty list
+
+        Node* temp = head;
+        while (temp && temp->data != value)
+            temp = temp->next;
+
+        if (!temp) return; // Value not found
+
+        if (temp->prev) {
+            temp->prev->next = temp->next;
+        } else {
+            head = temp->next; // Deleting the head
+        }
+
+        if (temp->next) {
+            temp->next->prev = temp->prev;
+        } else {
+            tail = temp->prev; // Deleting the tail
+        }
+
+        delete temp;
+    }
+    
+    //delete head node
+    void pop_front(int value) {
+        if (!head) return; //empty list
+        Node* temp = head;
+        while (temp && temp->data != value)
+            temp = temp->next;
+        if (!temp) return; //value not found
+        if (temp->prev) {
+            temp->prev->next = temp->next;
+        } else {
+            head = temp->next; //deleting the head
+        }
+        delete temp;
+    }
+    
+    //delete tail node
+    void pop_back(int value) {
+        if (!head) return; //empty list
+        Node* temp = head;
+        while (temp && temp->data != value)
+            temp = temp->next;
+        if (!temp) return; //value not found
+        if (temp->next) {
+            temp->next->prev = temp->prev;
+        } else {
+            tail = temp->prev; //deleting the tail
+        }
+        delete temp;
+    }
+    
+    //delete_val() {
+        
+    //}
 };
 
 // Driver program
