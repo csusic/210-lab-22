@@ -191,15 +191,25 @@ int main() {
     list.push_back(15);
     list.push_back(16);
     
-    list.delete_pos(3); //delete third element (15)
-    list.pop_back(); //delete tail (16)
-    list.pop_front(); //delete head (45)
-    list.delete_val(12); //delete value (12)
-    
     cout << "List forward: ";
     list.print();
     cout << "List backward: ";
     list.print_reverse();
+    
+    cout << endl;
+    cout << "Deleting third element: ";
+    list.delete_pos(3); //delete third element (15)
+    list.print();
+    cout << "Deleting tail: ";
+    list.pop_back(); //delete tail (16)
+    list.print();
+    cout << "Deleting head: ";
+    list.pop_front(); //delete head (45)
+    list.print();
+    cout << "Deleting by value (12): ";
+    list.delete_val(12); //delete value (12)
+    list.print();
+    cout << endl << endl;
 
     cout << "Deleting list, then trying to print.\n";
     list.~DoublyLinkedList();
