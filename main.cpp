@@ -181,11 +181,12 @@ public:
 // Driver program
 int main() {
     DoublyLinkedList list;
+    DoublyLinkedList list2;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
-    //for (int i = 0; i < size; ++i) {
-        //list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
-    //}
+    for (int i = 0; i < size; ++i) {
+        list2.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+    }
     
     //populate list with specific values
     list.push_back(45);
