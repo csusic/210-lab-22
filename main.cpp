@@ -136,8 +136,9 @@ public:
         if (!head) return; //empty list
 
         Node* temp = head;
-        while (temp && temp->data != value)
+        for (int i = 0; i < position - 1; i++) {
             temp = temp->next;
+        }
 
         if (!temp) return; //position not found
 
@@ -189,6 +190,11 @@ int main() {
     list.push_back(12);
     list.push_back(15);
     list.push_back(16);
+    
+    list.delete_pos(3); //delete third element (15)
+    list.pop_back(); //delete tail (16)
+    list.pop_front(); //delete head (45)
+    list.delete_val(12); //delete value (12)
     
     cout << "List forward: ";
     list.print();
