@@ -1,9 +1,11 @@
 // COMSC-210 | Lab 22 | Christine Susic
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+const int W1 = 11, W2 = 14; //set width
 
 class DoublyLinkedList {
 private:
@@ -130,7 +132,6 @@ public:
         }
     }
     
-    /* Start */
     //delete node by position
     void delete_pos(int position) {
         if (!head) return; //empty list
@@ -186,11 +187,13 @@ int main() {
         //list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
     //}
     
+    //populate list with specific values
     list.push_back(45);
     list.push_back(12);
     list.push_back(15);
     list.push_back(16);
     
+    //output
     cout << "List forward: ";
     list.print();
     cout << "List backward: ";
@@ -202,9 +205,11 @@ int main() {
     list.print();
     cout << "Deleting tail: ";
     list.pop_back(); //delete tail (16)
+    cout << setw(W1);
     list.print();
     cout << "Deleting head: ";
     list.pop_front(); //delete head (45)
+    cout << setw(W2);
     list.print();
     cout << "Deleting by value (12): ";
     list.delete_val(12); //delete value (12)
