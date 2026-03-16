@@ -78,7 +78,7 @@ public:
         temp->next = newNode;
     }
 
-    void delete_node(int value) {
+    void delete_val(int value) {
         if (!head) return; // Empty list
 
         Node* temp = head;
@@ -130,64 +130,50 @@ public:
         }
     }
     
+    /* Start */
     //delete node by position
-    void delete_pos(int value, int position) {
-        if (!head) return; // Empty list
+    void delete_pos(int position) {
+        if (!head) return; //empty list
 
         Node* temp = head;
         while (temp && temp->data != value)
             temp = temp->next;
 
-        if (!temp) return; // Value not found
+        if (!temp) return; //position not found
 
         if (temp->prev) {
             temp->prev->next = temp->next;
         } else {
-            head = temp->next; // Deleting the head
+            head = temp->next; //deleting the head
         }
 
         if (temp->next) {
             temp->next->prev = temp->prev;
         } else {
-            tail = temp->prev; // Deleting the tail
+            tail = temp->prev; //deleting the tail
         }
 
         delete temp;
     }
     
     //delete head node
-    void pop_front(int value) {
+    void pop_front() {
         if (!head) return; //empty list
         Node* temp = head;
-        while (temp && temp->data != value)
-            temp = temp->next;
-        if (!temp) return; //value not found
-        if (temp->prev) {
-            temp->prev->next = temp->next;
-        } else {
-            head = temp->next; //deleting the head
-        }
+        head = head->next;
+        head->prev = nullptr;
         delete temp;
     }
     
     //delete tail node
-    void pop_back(int value) {
+    void pop_back() {
         if (!head) return; //empty list
-        Node* temp = head;
-        while (temp && temp->data != value)
-            temp = temp->next;
-        if (!temp) return; //value not found
-        if (temp->next) {
-            temp->next->prev = temp->prev;
-        } else {
-            tail = temp->prev; //deleting the tail
-        }
+        Node* temp = tail;
+        tail = tail->prev;
+        tail->next = nullptr;
         delete temp;
     }
-    
-    //delete_val() {
-        
-    //}
+
 };
 
 // Driver program
@@ -195,11 +181,17 @@ int main() {
     DoublyLinkedList list;
     int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
 
-    for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+    //for (int i = 0; i < size; ++i) {
+        //list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
+    //}
+    
+    list.push_back(45);
+    list.push_back(12);
+    list.push_back(15);
+    list.push_back(16);
+    
     cout << "List forward: ";
     list.print();
-
     cout << "List backward: ";
     list.print_reverse();
 
